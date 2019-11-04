@@ -1,6 +1,6 @@
 $(function () {
     load(); //页面构建成后先调用load函数加载出数据
-    $('#title').keydown(function (event) { //回车键按下事件
+    $('#title').keydown(function (event) { //回车键按下事件,添加最新事件
         if (event.keyCode===13) {
             var local = getData(); //获取本地数据保存至local数组中
             local.push({title: $(this).val(), done: false}); //把最新数据添加到local数组中
@@ -43,7 +43,7 @@ $(function () {
         saveData(data); //保存数据
         load(); //重新加载数据
     })
-    $('ol,ul').on('click','input',function () { //给input（切换是否完成）绑定一个点击事件
+    $('ol,ul').on('click','input',function () { //给checkbox（切换是否完成）绑定一个点击事件
         var data=getData(); //获取数据
         var index=$(this).siblings('a').attr('id'); //获取id
         data[index].done=$(this).prop('checked'); //让data数据中的checked值改为当前已修改的值
